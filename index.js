@@ -21,10 +21,15 @@ const data = [
 //=========================================================================================================================================
 
 exports.handler = function (event, context, callback) {
+    console.log("test1");
     var alexa = Alexa.handler(event, context);
+    console.log("test2");
     alexa.appId = APP_ID;
+    console.log("test3");
     alexa.registerHandlers(handlers);
+    console.log("test4");
     alexa.execute();
+    console.log("test5");
 };
 
 const handlers = {

@@ -13,7 +13,7 @@
     },
     "scripts": {
         "test": "http-server -a localhost -p 8000 -c-1 ./index.js",
-        "start": "node ./index.js"
+        "start": "node ./server.js"
     },
     "dependencies": {
         "alexa-sdk": "^1.0.25",
