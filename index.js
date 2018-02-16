@@ -1,7 +1,7 @@
 'use strict';
 const Alexa = require('alexa-sdk');
 
-const APP_ID = undefined;
+const APP_ID = 'amzn1.ask.skill.4a3c1f1e-0523-4286-99c9-bfb4a3b7b1ac';
 
 const SKILL_NAME = 'Tabata coach';
 const HELLO_MESSAGE = 'Willkommen im Tabata Intervall Training. Ich bin Alexa und werde heute dein coach sein';
@@ -20,7 +20,7 @@ const data = [
 //
 //=========================================================================================================================================
 
-exports.handler = function(event, context, callback) {
+exports.handler = function (event, context, callback) {
     var alexa = Alexa.handler(event, context);
     alexa.appId = APP_ID;
     alexa.registerHandlers(handlers);
@@ -33,7 +33,7 @@ const handlers = {
     },
     'HelloIntent': function () {
         const speechOutput = HELLO_MESSAGE;
-		
+
         this.response.speak(speechOutput);
         this.emit(':responseReady');
     },

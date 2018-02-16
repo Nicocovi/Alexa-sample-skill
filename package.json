@@ -12,7 +12,7 @@
         "node": ">=6.9"
     },
     "scripts": {
-        "test": "http-server -a localhost -p 8000 -c-1 ./app",
+        "test": "http-server -a localhost -p 8000 -c-1 ./index.js",
         "start": "node ./index.js"
     },
     "dependencies": {
