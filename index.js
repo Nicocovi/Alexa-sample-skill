@@ -1,27 +1,55 @@
-/* Module dependencies.
-*/
+'use strict';
+const Alexa = require('alexa-sdk');
 
-const http = require('http');
-const express = require('express');
-const path = require('path');
+const APP_ID = undefined;
 
-const app = express();
+const SKILL_NAME = 'Tabata coach';
+const HELLO_MESSAGE = 'Willkommen im Tabata Intervall Training. Ich bin Alexa und werde heute dein coach sein';
+const HELP_MESSAGE = 'Wie kann ich dir behilflich sein?';
+const HELP_REPROMPT = 'Was willst du?';
+const STOP_MESSAGE = 'Du Lappen!';
 
-// Serve static assets from the /public folder
-app.use('/', express.static(path.join(__dirname, 'app')));
+//=========================================================================================================================================
+// 		DATA OF APP
+//=========================================================================================================================================
+const data = [
+    'Hier kommen unsere texte hin'
+];
 
-/* Get port from environment and store in Express.
-*/
+//=========================================================================================================================================
+//
+//=========================================================================================================================================
 
-const port = process.env.PORT || '8080';
-app.set('port', port);
+exports.handler = function(event, context, callback) {
+    var alexa = Alexa.handler(event, context);
+    alexa.appId = APP_ID;
+    alexa.registerHandlers(handlers);
+    alexa.execute();
+};
 
-/* Create HTTP server.
-*/
+const handlers = {
+    'LaunchRequest': function () {
+        this.emit('HelloIntent');
+    },
+    'HelloIntent': function () {
+        const speechOutput = HELLO_MESSAGE;
+		
+        this.response.speak(speechOutput);
+        this.emit(':responseReady');
+    },
+    'AMAZON.HelpIntent': function () {
+        const speechOutput = HELP_MESSAGE;
+        const reprompt = HELP_REPROMPT;
 
-const server = http.createServer(app);
-
-/* Listen on provided port, on all network interfaces.
-*/
-
-server.listen(port);
+        this.response.speak(speechOutput).listen(reprompt);
+        this.emit(':responseReady');
+    },
+    'AMAZON.CancelIntent': function () {
+        this.response.speak(STOP_MESSAGE);
+        this.emit(':responseReady');
+    },
+    'AMAZON.StopIntent': function () {
+        this.response.speak(STOP_MESSAGE);
+        this.emit(':responseReady');
+    },
+};
