@@ -4,7 +4,8 @@ var express = require('express');
 var app = express();
 
 console.log(skill);
-//skill.handler();
+
+app.use('/', skill.handler);
 
 const port = process.env.PORT || '8080';
 console.log("Server is listening on port %s", port);
