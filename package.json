@@ -1,21 +1,25 @@
 {
-  "name": "Alexa-sample-app",
-  "version": "0.0.0",
-  "description": "npm",
-  "private": true,
-  "repository": {
-    "type": "git",
-    "url": ""
-  },
-  "homepage": "",
-  "engines": {
-    "node": ">=6.9"
-  },
-  "scripts": {
-    "start": "node ./index.js"
-  },
-  "dependencies": {
-    "alexa-sdk": "^1.0.25",
-    "express": "^4.14.0"
-  }
+    "name": "Alexa-sample-app",
+    "version": "0.0.0",
+    "description": "npm",
+    "private": true,
+    "repository": {
+        "type": "git",
+        "url": ""
+    },
+    "homepage": "",
+    "engines": {
+        "node": ">=6.9"
+    },
+    "scripts": {
+        "test": "http-server -a localhost -p 8000 -c-1 ./app",
+        "start": "node ./index.js"
+    },
+    "dependencies": {
+        "alexa-sdk": "^1.0.25",
+        "express": "^4.14.0"
+    },
+    "devDependencies": {
+        "http-server": "^0.11.1"
+    }
 }
